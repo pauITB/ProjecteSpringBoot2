@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<thead>
+<th>Nom</th>
+<th>Color</th></br>
+</thead>
+<tbody>
+
+<tr th:each="Animal : ${llistaAnimal}">
+
+    <td th:text="${Animal.nomAnimal}">id</td>
+    <td th:text="${Animal.getColorAnimal()}">color</td>
+    <form action="#"  th:action="@{update/{name}(name = ${Animal.nomAnimal})}" th:object="${Animal}"  method="post">
+        <input type="submit" value="Update"/>
+    </form>
+    <form action="#"  th:action="@{delete/{name}(name = ${Animal.nomAnimal})}" th:object="${Animal}"  method="post">
+        <input  type="submit"  value="Remove"/>
+    </form>
+    </br>
+</tr>
+</tbody>
+</br>
+<form th:action="@{/login}" method="post">
+    <input type="submit" value="Login"/>
+</form>
+<form th:action="@{/registration}" method="get">
+    <input type="submit" value="Register"/>
+</form>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sortir (Sign Out)"/>
+</form>
+<tr>
+    <form action="#"  th:action="@{afegir}"  method="post">
+        <input  type="submit"  value="Afegir animal"/>
+    </form>
+</tr>
+<!--<tr>-->
+<!--    <form action="#" th:action="@{h2-console}" method="get">-->
+<!--        <input type="submit" value="Consola">-->
+<!--    </form>-->
+<!--</tr>-->
+</body>
+</html>
