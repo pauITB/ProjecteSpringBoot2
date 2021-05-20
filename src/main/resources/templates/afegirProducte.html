@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1 th:text="Registro">form</h1>
+<form action="#"  th:action="@{/afegirProducte}"  th:object="${Producte}" method="POST" >
+  <div>
+    <label th:text="Name">Nom Producte</label>
+    <input type="text" id="username" th:field="*{getNomProducte}"/>
+    <p th:each="error: ${#fields.errors('nomProducte')}"
+       th:text="${error}">Validation error</p>
+  </div>
+  <div>
+    <label th:text="quantitat">Quantitat Producte</label>
+    <input type="text"  th:field="*{getQuantitat}"/>
+    <p th:each="error : ${#fields.errors('quantitat')}"
+       th:text="${error}">Validation error</p>
+  </div>
+  <button type="submit" th:text="Submit">submit</button>
+</form>
+</br>
+</br>
+</br>
+</br>
+<form th:action="@{/logout}" method="post">
+  <input type="submit" value="Sortir (Sign Out)"/>
+</form>
+</body>
+</html>

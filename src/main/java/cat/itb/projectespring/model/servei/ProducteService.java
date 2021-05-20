@@ -28,14 +28,14 @@ public class ProducteService {
     @PostConstruct
     public void init() {
         repositori.save(new Productes("Iphone", 12));
-        repositori.save(new Productes("Pizzas", 12));
-        repositori.save(new Productes("Erizo", 12));
+        repositori.save(new Productes("Pizzas", 24));
+        repositori.save(new Productes("Erizo", 1));
     }
 
 
-    public Productes consultaPerNom(String id) {
+    public Productes consultaPerNom(String nomProducte) {
 
-        return  repositori.findById(id).get();
+        return  repositori.findById(nomProducte).get();
     }
 
     public void removeProductebyName(String s){

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<thead>
+<th>Nom</th>
+<th>Quantitat</th></br>
+</thead>
+<tbody>
+
+<tr th:each="Producte : ${llistaProducte}">
+
+    <td th:text="${Producte.getNomProducte}">id</td>
+    <td th:text="${Producte.getQuantitat()}">quantitat</td>
+    <form action="#" th:action="@{update/{name}(name = ${Producte.getNomProducte})}" th:object="${Producte}" method="post">
+        <input type="submit" value="Update"/>
+    </form>
+    <form action="#" th:action="@{delete/{name}(name = ${Producte.getNomProducte})}" th:object="${Producte}" method="post">
+        <input  type="submit"  value="Remove"/>
+    </form>
+    </br>
+</tr>
+</tbody>
+</br>
+<form th:action="@{/login}" method="post">
+    <input type="submit" value="Login"/>
+</form>
+<form th:action="@{/registration}" method="get">
+    <input type="submit" value="Register"/>
+</form>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sortir (Sign Out)"/>
+</form>
+<tr>
+    <form action="#"  th:action="@{afegir}"  method="post">
+        <input  type="submit"  value="Afegir producte"/>
+    </form>
+</tr>
+<!--<tr>-->
+<!--    <form action="#" th:action="@{h2-console}" method="get">-->
+<!--        <input type="submit" value="Consola">-->
+<!--    </form>-->
+<!--</tr>-->
+</body>
+</html>

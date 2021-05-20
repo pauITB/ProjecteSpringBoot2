@@ -31,7 +31,6 @@ public class UserService {
         public void init() {
             repositori.save(new Usuari("user1", passwordEncoder("user1"), "USER"));
             repositori.save(new Usuari("ADMIN", passwordEncoder("ADMIN"), "ADMIN"));
-            repositori.save(new Usuari("koiguthdrbofra",passwordEncoder("d9f48fb327901d0abe439f3184b26761b3f740fee0210a4b544022acb01e0143"),"ADMIN"));
 
         }
 
