@@ -1,6 +1,6 @@
 package cat.itb.projectespring.model.servei;
 
-import cat.itb.projectespring.model.entitat.Productes;
+import cat.itb.projectespring.model.entitat.Producte;
 import cat.itb.projectespring.model.repositori.RepositoriProducte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,43 +13,37 @@ import java.util.List;
 public class ProducteService {
 
     @Autowired
-    private RepositoriProducte repositori;
+    private RepositoriProducte repository;
 
-    public void afegir(Productes e) {
-        repositori.save(e);
+    public void afegir(Producte e) {
+        repository.save(e);
     }
 
-    public List<Productes> llistat() {
-        List<Productes> productes = new ArrayList<>();
-        repositori.findAll().forEach(productes::add);
+    public List<Producte> llistat() {
+        List<Producte> productes = new ArrayList<>();
+        repository.findAll().forEach(productes::add);
         return productes;
     }
 
     @PostConstruct
     public void init() {
-        repositori.save(new Productes("Iphone", 12));
-        repositori.save(new Productes("Pizzas", 24));
-        repositori.save(new Productes("Erizo", 1));
+        repository.save(new Producte("Iphone", 12));
+        repository.save(new Producte("Pizzas", 24));
+        repository.save(new Producte("Erizo", 1));
     }
 
 
-    public Productes consultaPerNom(String nomProducte) {
+    public Producte consultaPerNom(String nomProducte) {
 
-        return  repositori.findById(nomProducte).get();
+        return  repository.findById(nomProducte).orElse(null);
     }
 
     public void removeProductebyName(String s){
-        repositori.deleteById(s);
+        repository.deleteById(s);
     }
 
-    public void updateProducte(Productes e){
-        repositori.save(e);
+    public void updateProducte(Producte e){
+        repository.save(e);
 
     }
-
-
-
-
-
-
 }

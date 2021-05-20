@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Logueate para poder acceder al contenido</h1>
+    <form th:action="@{/home}" method="post">
+      <input type="submit" value="Login"/>
+    </form>
+    <form th:action="@{/registration}" method="get">
+        <input type="submit" value="Register"/>
+    </form>
+</body>
+</html>

@@ -17,6 +17,7 @@ public class UserService {
 
     @Autowired
         private RepositoriUsuari repositori ;
+
         public void afegir(Usuari e) {
             e.setPassword(passwordEncoder(e.getPassword()));
             repositori.save(e);
