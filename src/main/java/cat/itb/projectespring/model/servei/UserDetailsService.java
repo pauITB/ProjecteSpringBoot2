@@ -2,7 +2,6 @@ package cat.itb.projectespring.model.servei;
 
 import cat.itb.projectespring.model.entitat.Usuari;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

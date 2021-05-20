@@ -14,14 +14,14 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Animal {
+public class Productes {
     @NotNull
     @NotEmpty
     @Id
-    private String nomAnimal;
+    private String nomProducte;
     @NotNull
     @NotEmpty
-    private String colorAnimal;
+    private int quantitat;
 
 
 

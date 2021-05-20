@@ -23,9 +23,6 @@ public class Usuari {
     private String password;
     @NotNull
     @NotEmpty
-    private String matchingPassword;
-    @NotNull
-    @NotEmpty
     private String rol;
 
 

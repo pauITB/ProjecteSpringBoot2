@@ -2,9 +2,9 @@ package cat.itb.projectespring.controlador;
 
 
 
-import cat.itb.projectespring.model.entitat.Animal;
+import cat.itb.projectespring.model.entitat.Productes;
 import cat.itb.projectespring.model.entitat.Usuari;
-import cat.itb.projectespring.model.servei.AnimalService;
+import cat.itb.projectespring.model.servei.ProducteService;
 import cat.itb.projectespring.model.servei.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,23 +19,23 @@ public class Controlador {
     @Autowired
     private UserService servei;
     @Autowired
-    private AnimalService serveiAnimal;
+    private ProducteService serveiProducte;
 
 
     @GetMapping("/")
     public  String  inici(Model m){
-        m.addAttribute("llistaAnimal",serveiAnimal.llistat());
-        m.addAttribute("Animal",new Animal());
+        m.addAttribute("llistaProducte", serveiProducte.llistat());
+        m.addAttribute("Producte",new Productes());
         return "home";
     }
 
 
     @RequestMapping( value ="/delete/{name}", method = RequestMethod.POST)
-    public String removeAnimal(@PathVariable("name") String animal){
+    public String removeProducte(@PathVariable("name") String producte){
 
 
 
-        serveiAnimal.removeAnimalbyName(animal);
+        serveiProducte.removeProductebyName(producte);
         return "redirect:/";
     }
 
@@ -60,9 +60,9 @@ public class Controlador {
 
 
     @GetMapping("/home")
-    public String llistarAnimal(Model m){
-        m.addAttribute("llistaAnimal",serveiAnimal.llistat());
-        m.addAttribute("Animal",new Animal());
+    public String llistarProducte(Model m){
+        m.addAttribute("llistaProducte", serveiProducte.llistat());
+        m.addAttribute("Producte",new Productes());
         return "home";
     }
 
@@ -74,16 +74,16 @@ public class Controlador {
     }
 
     @RequestMapping("/afegir")
-    public String afegirAnimal(Model model) {
-        model.addAttribute("Animal", new Animal());
-        return "afegirAnimal";
+    public String afegirProducte(Model model) {
+        model.addAttribute("Producte", new Productes());
+        return "afegirProducte";
     }
 
-    @PostMapping("/afegirAnimal")
+    @PostMapping("/afegirProducte")
     //empleatForm és el nom de l'objecte que es recull al formulari, el CommandObject (bean)
     //https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#handling-the-command-object
-    public String AfegirAnimal(@ModelAttribute("Animal") Animal e){
-        serveiAnimal.afegir(e);
+    public String AfegirProducte(@ModelAttribute("Producte") Productes e){
+        serveiProducte.afegir(e);
         return "redirect:/";
 
     }
@@ -102,19 +102,19 @@ public class Controlador {
     }
 
     @RequestMapping( value ="/update/{name}", method = RequestMethod.POST)
-    public String updateAnimal(@PathVariable("name") String animal, Model m){
+    public String updateProducte(@PathVariable("name") String producte, Model m){
 
-        nom = animal;
-        m.addAttribute("Animal",serveiAnimal.consultaPerNom(animal));
+        nom = producte;
+        m.addAttribute("Producte", serveiProducte.consultaPerNom(producte));
 
-        return "/updateAnimal";
+        return "/updateProducte";
     }
 
-    @PostMapping("/updateAnimal")
+    @PostMapping("/updateProducte")
     //empleatForm és el nom de l'objecte que es recull al formulari, el CommandObject (bean)
     //https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#handling-the-command-object
-    public String updateAnimalpost(@ModelAttribute("Animal") Animal e){
-        serveiAnimal.updateAnimal(e);
+    public String updateProductepost(@ModelAttribute("Producte") Productes e){
+        serveiProducte.updateProducte(e);
         return "redirect:/";
 
     }
