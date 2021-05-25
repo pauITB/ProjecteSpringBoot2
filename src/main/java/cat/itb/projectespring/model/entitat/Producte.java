@@ -1,13 +1,12 @@
 package cat.itb.projectespring.model.entitat;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 
 @Data
@@ -15,8 +14,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Entity
 public class Producte {
+
     @NotNull
-    @NotEmpty
     @Id
     private String nomProducte;
 
